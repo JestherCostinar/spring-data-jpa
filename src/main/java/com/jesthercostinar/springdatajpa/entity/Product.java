@@ -6,10 +6,22 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Entity
+@Table(
+        name = "tbl_product",
+        schema = "ecommerce",
+        uniqueConstraints = {
+                @UniqueConstraint(name = "sku_unique", columnNames = "stock_keeping_unit"),
+                @UniqueConstraint(name = "name_uniqe", columnNames = "name")
+        }
+)
+
 public class Product {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(name = "stock_keeping_unit", nullable = false)
     private String sku;
+    @Column(nullable = false)
     private String name;
     private String description;
     private BigDecimal price;
