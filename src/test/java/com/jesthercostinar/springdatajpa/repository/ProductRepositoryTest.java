@@ -90,4 +90,13 @@ class ProductRepositoryTest {
         // Save multiple entity
         productRepository.saveAll(List.of(product2, product3, product4));
     }
+
+    // Retrieve all entity using findAllMethod()
+    @Test
+    void findAllMethod() {
+        List<Product> products = productRepository.findAll();
+        products.forEach(p -> {
+            System.out.println(p.getName());
+        });
+    }
 }
