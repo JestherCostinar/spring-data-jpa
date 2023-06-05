@@ -132,4 +132,20 @@ class ProductRepositoryTest {
 
         productRepository.deleteAll(List.of(product1, product2));
     }
+
+    // Count how many records in the repository
+    @Test
+    void countMethod() {
+        long count = productRepository.count();
+        System.out.println(count);
+    }
+
+    // Check if the entity is exist in the record or not using the existById() method
+
+    @Test
+    void existById() {
+        Long id = 12L;
+        boolean isProductExist = productRepository.existsById(id);
+        System.out.println(isProductExist);
+    }
 }
