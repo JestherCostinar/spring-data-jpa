@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -47,5 +49,45 @@ class ProductRepositoryTest {
 
         // save updated entity
         productRepository.save(product);
+    }
+
+    // Retrive entity base on given id
+    @Test
+    void retrieveUsingFindById() {
+        Long id = 1L;
+
+        Product product = productRepository.findById(id).get();
+    }
+
+    // Save multiple entity using saveAll() method
+    @Test
+    void saveMultipleEntity() {
+        // Create multiple product entity
+        Product product2 = new Product();
+        product2.setName("Product 2");
+        product2.setDescription("Product 2 description");
+        product2.setSku("200abc");
+        product2.setPrice(new BigDecimal(200));
+        product2.setActive(true);
+        product2.setImageUrl("product-image.jpg");
+
+        Product product3 = new Product();
+        product3.setName("Product 3");
+        product3.setDescription("Product 3 description");
+        product3.setSku("300abc");
+        product3.setPrice(new BigDecimal(300));
+        product3.setActive(true);
+        product3.setImageUrl("product-image.jpg");
+
+        Product product4 = new Product();
+        product4.setName("Product 4");
+        product4.setDescription("Product 4 description");
+        product4.setSku("400abc");
+        product4.setPrice(new BigDecimal(400));
+        product4.setActive(true);
+        product4.setImageUrl("product-image.jpg");
+
+        // Save multiple entity
+        productRepository.saveAll(List.of(product2, product3, product4));
     }
 }
