@@ -64,26 +64,26 @@ class ProductRepositoryTest {
     void saveMultipleEntity() {
         // Create multiple product entity
         Product product2 = new Product();
-        product2.setName("Product 5");
-        product2.setDescription("Product 5 description");
-        product2.setSku("500abc");
-        product2.setPrice(new BigDecimal(500));
+        product2.setName("Product 8");
+        product2.setDescription("Product 8 description");
+        product2.setSku("800abc");
+        product2.setPrice(new BigDecimal(800));
         product2.setActive(true);
         product2.setImageUrl("product-image.jpg");
 
         Product product3 = new Product();
-        product3.setName("Product 6");
-        product3.setDescription("Product 6 description");
-        product3.setSku("600abc");
-        product3.setPrice(new BigDecimal(600));
+        product3.setName("Product 9");
+        product3.setDescription("Product 9 description");
+        product3.setSku("900abc");
+        product3.setPrice(new BigDecimal(900));
         product3.setActive(true);
         product3.setImageUrl("product-image.jpg");
 
         Product product4 = new Product();
-        product4.setName("Product 7");
-        product4.setDescription("Product 7 description");
-        product4.setSku("700abc");
-        product4.setPrice(new BigDecimal(700));
+        product4.setName("Product 10");
+        product4.setDescription("Product 10 description");
+        product4.setSku("1000abc");
+        product4.setPrice(new BigDecimal(1000));
         product4.setActive(true);
         product4.setImageUrl("product-image.jpg");
 
