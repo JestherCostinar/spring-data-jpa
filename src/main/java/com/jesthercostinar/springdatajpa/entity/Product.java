@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(
-        name = "tbl_product",
+        name = "products",
         schema = "ecommerce",
         uniqueConstraints = {
                 @UniqueConstraint(name = "sku_unique", columnNames = "stock_keeping_unit"),
@@ -17,7 +17,15 @@ import java.time.LocalDateTime;
 
 public class Product {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "product_generator"
+    )
+    @SequenceGenerator(
+            name = "product_generator",
+            sequenceName = "products_sequence_name",
+            allocationSize = 1
+    )
     private Long id;
     @Column(name = "stock_keeping_unit", nullable = false)
     private String sku;
