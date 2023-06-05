@@ -21,10 +21,10 @@ class ProductRepositoryTest {
     void saveMethod() {
         // Create product
         Product product = new Product();
-        product.setName("Product 1");
-        product.setDescription("Product 1 description");
-        product.setSku("100abc");
-        product.setPrice(new BigDecimal(100));
+        product.setName("Product to delete");
+        product.setDescription("Product to delete description");
+        product.setSku("500abc");
+        product.setPrice(new BigDecimal(500));
         product.setActive(true);
         product.setImageUrl("product-image.jpg");
 
@@ -64,26 +64,26 @@ class ProductRepositoryTest {
     void saveMultipleEntity() {
         // Create multiple product entity
         Product product2 = new Product();
-        product2.setName("Product 2");
-        product2.setDescription("Product 2 description");
-        product2.setSku("200abc");
-        product2.setPrice(new BigDecimal(200));
+        product2.setName("Product 5");
+        product2.setDescription("Product 5 description");
+        product2.setSku("500abc");
+        product2.setPrice(new BigDecimal(500));
         product2.setActive(true);
         product2.setImageUrl("product-image.jpg");
 
         Product product3 = new Product();
-        product3.setName("Product 3");
-        product3.setDescription("Product 3 description");
-        product3.setSku("300abc");
-        product3.setPrice(new BigDecimal(300));
+        product3.setName("Product 6");
+        product3.setDescription("Product 6 description");
+        product3.setSku("600abc");
+        product3.setPrice(new BigDecimal(600));
         product3.setActive(true);
         product3.setImageUrl("product-image.jpg");
 
         Product product4 = new Product();
-        product4.setName("Product 4");
-        product4.setDescription("Product 4 description");
-        product4.setSku("400abc");
-        product4.setPrice(new BigDecimal(400));
+        product4.setName("Product 7");
+        product4.setDescription("Product 7 description");
+        product4.setSku("700abc");
+        product4.setPrice(new BigDecimal(700));
         product4.setActive(true);
         product4.setImageUrl("product-image.jpg");
 
@@ -98,5 +98,38 @@ class ProductRepositoryTest {
         products.forEach(p -> {
             System.out.println(p.getName());
         });
+    }
+
+    // Delete entity using deleteById Method()
+    @Test
+    void deleteById() {
+        Long id = 8L;
+        productRepository.deleteById(id);
+    }
+
+    // Delete entity by  All the entity information using delete method()
+    @Test
+    void deleteMethod() {
+        // find an entity by id first
+        Long id = 7L;
+        Product product = productRepository.findById(id).get();
+
+        // delete the entity using the retrieve id
+        productRepository.delete(product);
+    }
+
+    // Delete all entity by providing the list of entities to delete using deleteAll() method
+    // Delete all - If the parameter is not supply, all the entity inside the repository will be deleted
+    @Test
+    void deleteAll() {
+        // This will delete all the entity in the product repository because the parameter is not supply
+        productRepository.deleteAll();
+
+        // This will delete all the entity that is supplied in the parameter
+        Product product1 = productRepository.findById(10L).get();
+        Product product2 = productRepository.findById(11L).get();
+        Product product3 = productRepository.findById(12L).get();
+
+        productRepository.deleteAll(List.of(product1, product2));
     }
 }
