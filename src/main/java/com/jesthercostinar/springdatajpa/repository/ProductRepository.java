@@ -1,0 +1,7 @@
+package com.jesthercostinar.springdatajpa.repository;
+
+import com.jesthercostinar.springdatajpa.entity.Product;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface ProductRepository extends JpaRepository<Product, Long> {
+}
